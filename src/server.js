@@ -26,7 +26,6 @@ import { body, validationResult } from "express-validator"; // for input validat
 // 2. CONFIG & ENVIRONMENT
 dotenv.config({quiet: true});
 const app = express();
-app.set('trust proxy', 1); // trust first proxy
 const port = process.env.PORT 
 const JWT_SECRET = process.env.JWT_SECRET;
 
