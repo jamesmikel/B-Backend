@@ -40,7 +40,7 @@ app.use(cors({
     const allowed = [ 
       "https://b-6ug1.vercel.app",
       "https://blackridge-finance.io",
-      undefined
+      undefined,
       null
     ];
     if (!origin || allowed.includes(origin)) {
