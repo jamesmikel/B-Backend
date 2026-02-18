@@ -38,7 +38,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 app.use(cors({
   origin: (origin, callback) => {
     const allowed = [ 
-      "https://b-6ug1.vercel.app"
+      "https://b-6ug1.vercel.app",
       "https://blackridge-finance.io", 
     ];
     if (!origin || allowed.includes(origin)) {
