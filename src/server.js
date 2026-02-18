@@ -336,7 +336,7 @@ app.post("/login", authLimiter, async (req, res) => {
     }
     // ✅ SUCCESS → RESET RATE LIMIT
       authLimiter.resetKey(req.ip);
-    const referrals = await pool.query("SELECT * FROM users WHERE referrals =$1", [user.username])
+    const referrals = await pool.query("SELECT * FROM users WHERE referrer =$1", [user.username])
     
     const refCount = referrals.rows.length;
    
