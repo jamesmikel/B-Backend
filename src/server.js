@@ -362,7 +362,8 @@ app.post("/login", authLimiter, async (req, res) => {
       user: { id: user.id, username: user.username },
     });
   } catch (err) {
-    res.status(500).json({ error: "Server error" });
+    console.error("Login error:", err);
+    res.status(500).json({ error: "Server error during login" });
   }
 });
 
