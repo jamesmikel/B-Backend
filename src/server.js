@@ -39,6 +39,7 @@ app.use(cors({
   origin: (origin, callback) => {
     const allowed = [ 
       "https://b-6ug1.vercel.app",
+      "https://www.blackridge-finance.io",
       "https://blackridge-finance.io",
       undefined,
       null
