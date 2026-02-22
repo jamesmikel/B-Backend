@@ -40,6 +40,7 @@ app.use(cors({
     const allowed = [ 
       "https://b-6ug1.vercel.app",
       "https://www.blackridge-finance.io",
+      "https://api.blackridge-finance.io",
       "https://blackridge-finance.io",
       undefined,
       null
@@ -354,7 +355,7 @@ app.post("/login", authLimiter, async (req, res) => {
   sameSite: "Lax",  // Change from "none" to "Lax" — Safari hates "none" without proper setup
   maxAge: 7 * 24 * 60 * 60 * 1000,
   path: "/",
-  domain: ".trusted-finance.biz"  // Add this to share across subdomains (www and non-www)
+  domain: ".blackridge-finance.io"// Add this to share across subdomains (www and non-www)
 });
 
 
