@@ -17,8 +17,8 @@ import { createGroqMessages } from "./blck-support.js";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import { CryptoMiner } from "./CryptoMiner.js";
-
 import { body, validationResult } from "express-validator"; // for input validation
+import sgMail from "@sendgrid/mail";
 
 
 
