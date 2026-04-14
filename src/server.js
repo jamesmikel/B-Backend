@@ -388,7 +388,9 @@ app.post("/logout", (req, res) => {
 // Authentication middleware
 
 const authenticate = (req, res, next) => {
+  console.log("cookies:", req.cookies);
   const token = req.cookies.auth_token;
+  
 
   if (!token) {
     return res.status(401).json({ error: "No token provided" });
