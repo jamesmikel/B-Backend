@@ -354,7 +354,7 @@ app.post("/login", authLimiter, async (req, res) => {
    res.cookie("auth_token", token, {
   httpOnly: true,
   secure: true,
-  sameSite: "Lax",  // Change from "none" to "Lax" — Safari hates "none" without proper setup
+  sameSite: "none",  // Change from "none" to "Lax" — Safari hates "none" without proper setup
   maxAge: 7 * 24 * 60 * 60 * 1000,
   path: "/",
  // domain: ".blackridge-finance.io"// Add this to share across subdomains (www and non-www)
