@@ -357,7 +357,7 @@ app.post("/login", authLimiter, async (req, res) => {
   sameSite: "Lax",  // Change from "none" to "Lax" — Safari hates "none" without proper setup
   maxAge: 7 * 24 * 60 * 60 * 1000,
   path: "/",
-  domain: ".blackridge-finance.io"// Add this to share across subdomains (www and non-www)
+ // domain: ".blackridge-finance.io"// Add this to share across subdomains (www and non-www)
 });
 
 
