@@ -710,6 +710,7 @@ let level = userReferralLevel; // Start from the user's current referral level
       const miner = new CryptoMiner(plan.rows[0]);
       global.miners[req.user.id] = miner;
       console.log("Global miners object:", Object.keys(global.miners));
+      await pool.query("DELETE FROM user_deposits WHERE user_id=$1",[req.user.username])
 
       console.log("CryptoMiner plan created for user", req.user.username, miner);
       await transporter.sendMail({
@@ -733,7 +734,7 @@ let level = userReferralLevel; // Start from the user's current referral level
         `,
       });
 
-      await pool.query("DELETE FROM user_deposits WHERE user_id=$1",[req.user.username])
+      
       
       return res.json({ success: true });
     }
@@ -761,12 +762,14 @@ app.get("/api/miner/status", authenticate, minerLimiter, (req, res) => {
 app.post("/api/miner/withdraw", authenticate, async (req, res) => {
   const miner = global.miners[req.user.id];
   
+  
 
   if (!miner) {
     return res.status(404).json({ error: "No active mining plan" });
   }
 
   const amount = miner.withdraw();
+  delete global.miners[req.user.id];
   await pool.query(
     "INSERT INTO transactions (user_id, type, amount, description, reference) VALUES ($1, 'withdrawal', $2, 'User withdrawal', $3)",
     [req.user.id, amount, `with_${Math.floor(Math.random() * 100000)}`]
@@ -784,7 +787,7 @@ app.post("/api/miner/withdraw", authenticate, async (req, res) => {
     `,
   });
 
- delete global.miners[req.user.id];
+ 
   
  
 
