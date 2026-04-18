@@ -682,7 +682,7 @@ let level = userReferralLevel; // Start from the user's current referral level
         [refUser.id, bonusAmount, JSON.stringify({ level: level + 1, from_user: req.user.username, from_deposit: plan.rows[0].confirmed_deposit })]
       );
       await transporter.sendMail({
-        from: `"TrustedFinance" <${process.env.EMAIL_USER}>`,
+        from: `"Blackridge Finance" <${process.env.EMAIL_USER}>`,
         to: refUser.email,
         subject: 'Referral Bonus Received',
         html: `
